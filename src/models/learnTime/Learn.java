@@ -10,8 +10,11 @@ import models.man.Teacher;
 import models.room.Room;
 import models.simulatorProgram.SimulatorProgram;
 
+import java.time.LocalDate;
+
 public class Learn extends EntityClass {
-    private StringProperty start = new SimpleStringProperty();
+    private ObjectProperty<LocalDate> start = new SimpleObjectProperty<>();
+    //private StringProperty start = new SimpleStringProperty();
     private ObjectProperty<Room> room = new SimpleObjectProperty<>();
     private ObjectProperty<Student> student = new SimpleObjectProperty<>();
     private ObjectProperty<Teacher> teacher = new SimpleObjectProperty<>();
@@ -24,7 +27,7 @@ public class Learn extends EntityClass {
 
     public Learn(){};
 
-    public Learn(String start, Room room, Student student, Teacher teacher, SimulatorProgram simulatorProgram, LearnType learnType) {
+    public Learn(LocalDate start, Room room, Student student, Teacher teacher, SimulatorProgram simulatorProgram, LearnType learnType) {
         this.start.set(start);
         this.room.set(room);
         this.student.set(student);
@@ -33,15 +36,15 @@ public class Learn extends EntityClass {
         this.learnType.set(learnType);
     }
 
-    public String getStart() {
+    public LocalDate getStart() {
         return start.get();
     }
 
-    public StringProperty startProperty() {
+    public ObjectProperty<LocalDate> startProperty(){
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(LocalDate start) {
         this.start.set(start);
     }
 

@@ -1,6 +1,7 @@
 package controllers;
 
 
+import Formatters.FirstFormatter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,6 +27,11 @@ public class PersonController {
     private TextField ageTF;
 
     private Learn learn;
+
+    @FXML
+    public void initialize(){
+        ageTF.setTextFormatter(new FirstFormatter());
+    }
 
     public void findLearn(Learn learn) {
         this.learn = learn;

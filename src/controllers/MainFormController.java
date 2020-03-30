@@ -16,7 +16,6 @@ import models.learnTime.LearnType;
 import models.man.Student;
 import registry.GWRegistry;
 
-
 public class MainFormController {
     @FXML
     TableView<Learn> learnTableView;
@@ -38,6 +37,30 @@ public class MainFormController {
         learnTableView.setItems(learns);
     }
 
+    public void lookTeachers() throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/teachers.fxml"));
+        VBox page = (VBox) loader.load();
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Все учителя");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        dialogStage.show();
+    }
+
+    public void lookRooms() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/rooms.fxml"));
+        VBox page = (VBox) loader.load();
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Места обучения");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        dialogStage.show();
+    }
+
     public void look() throws Exception {
         Learn learn = learnTableView.getSelectionModel().getSelectedItem();
         lookLearn(learn);
@@ -53,7 +76,10 @@ public class MainFormController {
     public void newLearn() throws Exception {
         Learn learn = new Learn();
         newStudent(learn);
-        learns.add(learn);
+        if(learn != null){
+            learns.add(learn);
+        }
+
     }
 
     public void lookLearn(Learn learn) throws Exception {

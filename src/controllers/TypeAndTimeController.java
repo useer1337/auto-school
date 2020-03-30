@@ -1,23 +1,29 @@
 package controllers;
 
+import Formatters.FirstFormatter;
 import exceptions.EntityNotFound;
 import gw.LearnGW;
 import gw.LearnTypeGetWay;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.learnTime.Learn;
 import models.learnTime.LearnType;
 import registry.GWRegistry;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.regex.Pattern;
+
 public class TypeAndTimeController {
     @FXML
     ComboBox<LearnType> learnTypeComboBox;
 
     @FXML
-    TextField timeTF;
+    DatePicker datePicker;
 
     private Learn learn;
 
@@ -35,11 +41,11 @@ public class TypeAndTimeController {
 
     public void add() throws EntityNotFound {
         learn.setLearnType(learnTypeComboBox.getSelectionModel().getSelectedItem());
-        learn.setStart(timeTF.getText());
+        learn.setStart(datePicker.getValue());
 
         learnGW.insert(learn);
 
-        Stage stage = (Stage)timeTF.getScene().getWindow();
+        Stage stage = (Stage)learnTypeComboBox.getScene().getWindow();
         stage.close();
     }
 }

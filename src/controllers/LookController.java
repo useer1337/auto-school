@@ -4,6 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import models.learnTime.Learn;
 
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+
 public class LookController {
     @FXML
     TextField lastNameTF;
@@ -44,8 +48,28 @@ public class LookController {
         roomTF.setText(learn.getRoom().getAddress());
         categoryTF.setText(learn.getSimulatorProgram().getCategory().getCategory_type());
         transmissionTF.setText(learn.getSimulatorProgram().getTransmission().getTransmission_type());
-        periodTF.setText(learn.getStart() + " " + "Здесь будет что-то еще интересное(например дата конца в зависимости от типа оьучения)");
+        periodTF.setText(learn.getStart().toString() + "-" + addDate());
     }
 
+
+    public String addDate(){
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+
+        Date date = Date.from(learn.getStart().atStartOfDay(defaultZoneId).toInstant());
+
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(date);
+        if(learn.getLearnType().getName() == "Обычное (3 месяца)"){
+            instance.add(Calendar.MONTH,3);
+        }
+        else{
+            instance.add(Calendar.MONTH,3);
+            instance.add(Calendar.DAY_OF_MONTH,15);
+        }
+
+        Date newDate = instance.getTime();
+
+        return newDate.toInstant().atZone(defaultZoneId).toLocalDate().toString();
+    }
 
 }

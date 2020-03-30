@@ -9,6 +9,8 @@ import models.EntityClass;
 public class Room extends EntityClass {
     private StringProperty address = new SimpleStringProperty();
 
+    public Room(){};
+
     public Room(String address) {
         this.address.set(address);
     }
