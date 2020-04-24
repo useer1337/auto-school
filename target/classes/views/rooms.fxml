@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RoomController">
+   <children>
+      <TableView fx:id="roomTableView" prefHeight="336.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="roomStringTableColumn" prefWidth="599.0" text="Помещение" />
+        </columns>
+      </TableView>
+      <HBox alignment="TOP_RIGHT" prefHeight="29.0" prefWidth="600.0" spacing="5.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#delRoom" prefWidth="60.0" text="Удалить" />
+            <Button mnemonicParsing="false" onAction="#newRoom" prefHeight="25.0" prefWidth="60.0" text="Новое" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
